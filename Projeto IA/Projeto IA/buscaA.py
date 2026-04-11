@@ -4,8 +4,6 @@ from service import avaliarVizinho
 import time
 
 def buscaA(tamanho, mapa):
-
-    print('Busca A*: ')
     
     tempoInicio = time.time()
     nosExpandidos = 0
@@ -64,7 +62,7 @@ def buscaA(tamanho, mapa):
     tempoMs = (tempoFim - tempoInicio) * 1000
 
     if matrizPai[pontoFinal[0]][pontoFinal[1]] is not None:
-        exibirResultados(pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa)
+        exibirResultados("Busca A*", pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa)
     else:
         print('Nenhum caminho encontrado ')
         print('Nós expandidos: ', nosExpandidos)

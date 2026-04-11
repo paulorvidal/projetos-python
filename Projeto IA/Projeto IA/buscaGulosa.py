@@ -3,8 +3,6 @@ from service import calcularDistancia
 import time
 
 def buscaGulosa(tamanho, mapa):
-
-    print('Busca Gulosa: ')
     
     tempoInicio = time.time()
     nosExpandidos = 0
@@ -93,7 +91,7 @@ def buscaGulosa(tamanho, mapa):
     tempoMs = (tempoFim - tempoInicio) * 1000
 
     if matrizPai[pontoFinal[0]][pontoFinal[1]] is not None:
-        exibirResultados(pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa)
+        exibirResultados("Busca Gulosa", pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa)
     else:
         print('Nenhum caminho encontrado ')
         print('Nós expandidos: ', nosExpandidos)

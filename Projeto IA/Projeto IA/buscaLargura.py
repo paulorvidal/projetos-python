@@ -3,8 +3,6 @@ import time
 
 def buscaLargura(tamanho, mapa):
 
-    print('Busca em Largura: ')
-
     tempoInicio = time.time()
     pontoInicial = (0,0)
     pontoFinal = (tamanho - 1, tamanho - 1)
@@ -80,7 +78,7 @@ def buscaLargura(tamanho, mapa):
     tempoMs = (tempoFim - tempoInicio) * 1000
 
     if matrizPai[pontoFinal[0]][pontoFinal[1]] is not None:
-        exibirResultados(pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa)
+        exibirResultados("Busca em Largura", pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa)
     else:
         print('Nenhum caminho encontrado ')
         print('Nós expandidos: ', nosExpandidos)

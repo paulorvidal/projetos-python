@@ -42,29 +42,6 @@ def criarLabirinto(tamanho, parede):
     # mapa[tamanho -1][tamanho -1] = 'B'
     return mapa
 
-def imprimirCaminhoMapa(mapa, tamanho, caminho, matrizPai):
-    for i in range(0, tamanho):
-        for j in range(0, tamanho):
-            
-            if (i, j) == (0,0):
-                print(f"{'A':>3}", end='')
-                
-            elif (i, j) == (tamanho - 1, tamanho - 1):
-                print(f"{'B':>3}", end='')
-                
-            elif (i, j) in caminho:
-                print(f"{'*':>3}", end='')
-
-            elif matrizPai[i][j] is not None:
-                print(f"{'-':>3}", end='')
-                
-            else:
-                valor = mapa[i][j]
-                if valor == -1:
-                    print(f"{'■':>3}", end='')
-                else:
-                    print(f"{str(valor):>3}", end='')
-        print()
 
 def animarCaminho(nomeBusca, mapa, tamanho, caminho, matrizPai):
     os.system('') 
@@ -80,7 +57,7 @@ def animarCaminho(nomeBusca, mapa, tamanho, caminho, matrizPai):
     for passo_atual in caminho:
         rastro.append(passo_atual)
         
-        frame = f"Passo atual do {nomeBusca[1]}: {passo_atual} \033[K\n"
+        frame = f"Passo atual do {nomeBusca}: {passo_atual} \033[K\n"
         
         for linha in range(tamanho):
             for coluna in range(tamanho):
@@ -157,11 +134,9 @@ def avaliarVizinho(novaLinha, novaColuna, custoAcumulado, noPai, pontoFinal, map
         
         fila.append((custoTotal, novoCustoAcumulado, (novaLinha, novaColuna)))
 
-def exibirResultados(pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa):
+def exibirResultados(nomeBusca, pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa):
     caminho = []
     atual = pontoFinal
-    nomeBusca = ["Busca em Largura", "Busca em Profundidade", "Busca Gulosa", "Busca A*"]
-
     while atual is not None:
         caminho.append(atual)
         atual = matrizPai[atual[0]][atual[1]]
@@ -179,7 +154,7 @@ def exibirResultados(pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa):
             custoAcumulado += valorTerreno
 
 
-    print("\nDeseja ver o caminho percorrido? (s/n)")
+    print(f"\nDeseja ver o caminho percorrido da {nomeBusca}? (s/n)")
     resposta = input().strip().lower() 
     if resposta == 's':
         animarCaminho(nomeBusca, mapa, len(mapa), caminho, matrizPai)
@@ -187,8 +162,5 @@ def exibirResultados(pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa):
         print ('Nós expandidos: ', nosExpandidos)
         print('Tempo de execução:', tempoMs, 'milissegundos')
         print('Custo Acumulado: ', custoAcumulado)
-
-    
-    #imprimirCaminhoMapa(mapa, len(mapa), caminho, matrizPai)
 
    

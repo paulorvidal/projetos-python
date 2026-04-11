@@ -3,7 +3,6 @@ import time
 
 def buscaProfundidade(tamanho, mapa):
 
-    print('Busca em Profundidade: ')
 
     tempoIncio = time.time()
     pontoInicial = (0,0)
@@ -79,7 +78,7 @@ def buscaProfundidade(tamanho, mapa):
     tempoMs = (tempoFim - tempoIncio) * 1000
 
     if matrizPai[pontoFinal[0]][pontoFinal[1]] is not None:
-        exibirResultados(pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa)
+        exibirResultados("Busca em Profundidade", pontoFinal, nosExpandidos, tempoMs, matrizPai, mapa)
     else:
         print('Nenhum caminho encontrado ')
         print('Nós expandidos: ', nosExpandidos)
